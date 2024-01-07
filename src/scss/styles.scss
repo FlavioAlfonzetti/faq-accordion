@@ -1,0 +1,111 @@
+@use "variables";
+@import "bootstrap/scss/bootstrap";
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-image: url("../images/background-pattern-mobile.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: var(--primary-light-pink);
+  font-family: var(--ff-body);
+
+  .container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+
+    .accordion {
+      background-color: white;
+      margin: 0 0.8rem;
+      padding-block: 1.5rem 0;
+      border-radius: 0.5rem;
+
+      .main-header {
+        display: flex;
+        padding-left: 1.2rem;
+        gap: 1.4rem;
+        align-items: center;
+
+        .main-header_img {
+          width: 1.5rem;
+          height: 100%;
+          margin-bottom: 0.5rem;
+        }
+
+        h1 {
+          font-weight: var(--fw-bold);
+          font-size: 2rem;
+        }
+      }
+
+      .accordion-item {
+        position: relative;
+        border-bottom: none;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 1.5rem; /* Adjust the left position to control the start of the shorter border */
+          right: 1.5rem; /* Adjust the right position to control the end of the shorter border */
+          border-bottom: 1px solid rgba(128, 128, 128, 0.096);
+        }
+
+        &:last-child::after {
+          display: none;
+        }
+
+        &:nth-child(2) h2 {
+          padding-top: 0;
+        }
+
+        .accordion-header {
+          display: flex;
+          width: 80%;
+          gap: 2rem;
+          padding-block: 0.5rem; /* top and bottom */
+
+          .accordion-button {
+            position: relative;
+            background-color: transparent !important;
+            font-weight: var(--fw-semibold);
+            box-shadow: none;
+
+            &:focus {
+              box-shadow: none !important;
+            }
+
+            &::after {
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='31' fill='none' viewBox='0 0 30 31'%3E%3Cpath fill='%23AD28EB' d='M15 3.313A12.187 12.187 0 1 0 27.188 15.5 12.203 12.203 0 0 0 15 3.312Zm4.688 13.124h-3.75v3.75a.938.938 0 0 1-1.876 0v-3.75h-3.75a.938.938 0 0 1 0-1.875h3.75v-3.75a.938.938 0 0 1 1.876 0v3.75h3.75a.938.938 0 0 1 0 1.876Z'/%3E%3C/svg%3E");
+
+              position: absolute;
+              right: -2.8rem;
+              transition: all 0.5s;
+              background-size: 2.2rem;
+              width: 2.2rem;
+              height: 2.2rem;
+            }
+
+            &:not(.collapsed)::after {
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='35' height='31' fill='none' viewBox='0 0 30 31'%3E%3Cpath fill='%23301534' d='M15 3.313A12.187 12.187 0 1 0 27.188 15.5 12.2 12.2 0 0 0 15 3.312Zm4.688 13.124h-9.375a.938.938 0 0 1 0-1.875h9.374a.938.938 0 0 1 0 1.876Z'/%3E%3C/svg%3E");
+            }
+          }
+        }
+
+        .accordion-body {
+          color: var(--primary-grayish-purple);
+          font-size: 0.9rem;
+          padding-block: 0 1.5rem;
+        }
+      }
+    }
+  }
+}
