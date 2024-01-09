@@ -16,11 +16,16 @@ body {
   background-color: var(--primary-light-pink);
   font-family: var(--ff-body);
 
+  @media (min-width: 700px) {
+    background-image: url("../images/background-pattern-desktop.svg");
+  }
+
   .container {
     display: flex;
     height: 100vh;
     flex-direction: column;
     justify-content: center;
+    max-width: 610px;
 
     .accordion {
       background-color: white;
@@ -28,34 +33,52 @@ body {
       padding-block: 1.5rem 0;
       border-radius: 0.5rem;
 
+      @media (min-width: 700px) {
+        padding-block: 2rem 1rem;
+        padding-inline: 1rem;
+        border-radius: 1rem;
+      }
+
       .main-header {
         display: flex;
         padding-left: 1.2rem;
         gap: 1.4rem;
         align-items: center;
 
+        @media (min-width: 700px) {
+          gap: 1rem;
+        }
+
         .main-header_img {
           width: 1.5rem;
           height: 100%;
           margin-bottom: 0.5rem;
+
+          @media (min-width: 700px) {
+            width: 2rem;
+          }
         }
 
         h1 {
           font-weight: var(--fw-bold);
           font-size: 2rem;
+
+          @media (min-width: 700px) {
+            font-size: 3rem;
+          }
         }
       }
 
       .accordion-item {
         position: relative;
-        border-bottom: none;
+        border: none;
 
         &::after {
           content: "";
           position: absolute;
           bottom: 0;
-          left: 1.5rem; /* Adjust the left position to control the start of the shorter border */
-          right: 1.5rem; /* Adjust the right position to control the end of the shorter border */
+          left: 1.5rem;
+          right: 1.5rem;
           border-bottom: 1px solid rgba(128, 128, 128, 0.096);
         }
 
@@ -79,6 +102,14 @@ body {
             font-weight: var(--fw-semibold);
             box-shadow: none;
 
+            &:hover {
+              color: var(--primary-dark-purple);
+            }
+
+            @media (min-width: 700px) {
+              padding-right: 0;
+            }
+
             &:focus {
               box-shadow: none !important;
             }
@@ -92,6 +123,10 @@ body {
               background-size: 2.2rem;
               width: 2.2rem;
               height: 2.2rem;
+
+              @media (min-width: 700px) {
+                right: -5rem;
+              }
             }
 
             &:not(.collapsed)::after {
